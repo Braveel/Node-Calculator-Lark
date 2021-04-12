@@ -1,7 +1,7 @@
 # Node-Calculator-Lark
 Creates a graph of Autodesk Maya's nodes based on a string expression. Lark is used as a parser.
 
-Inspired by [Chad Vernon's implementation](https://github.com/chadmv/cmt), I decided to make my own node calculator with blackjack and ...**Lark**.
+Inspired by [Chad Vernon's implementation](https://github.com/chadmv/cmt), I decided to make my own node calculator with blackjack and ...[**Lark**](https://github.com/lark-parser/lark).
 
 ## Install:
 
@@ -71,20 +71,20 @@ The right value is an expression written in human readable style.
     
  - Only for vectors:
     
-   	- dot(x, y [,norm=0]) - dot product, the default result is not normalized. To normalize, set the flag **norm=1**.
-    - cross(x, y [,norm=0]) - cross product, same as dot.
+   - dot(x, y [,norm=0]) - dot product, the default result is not normalized. To normalize, set the flag **norm=1**.
+   - cross(x, y [,norm=0]) - cross product, same as dot.
     
-	Note: the list of functions will expand.
+  #### Note: the list of functions will expand.
 
 
-### 5. If the binary operation involves a vector and a scalar, the expression takes the form:
+### 5. If the binary operation involves a <ins>__vector__</ins> and a <ins>__scalar__</ins>, the expression takes the form:
 
 	<vec> op scalar == <vec[0] op scalar, vec[1] op scalar, vec[2] op scalar>
 	
     Example: 
     <head_1_ctrl.ry, 43, 22> + 33 == <head_1_ctrl.ry +33, 43 + 33, 22 + 33>
 
-### 6. If the binary operation involves a vector and a vector, the expression takes the form
+### 6. If the binary operation involves a <ins>__vector__</ins> and a <ins>__vector__</ins>, the expression takes the form
 
 	<vec1> op <vec2> == <vec1[0] op vec2[0], vec1[1] op vec2[1], vec1[2] op vec2[2]>
 	
