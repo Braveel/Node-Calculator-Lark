@@ -213,9 +213,10 @@ def sum_sub_func(body, func_operator):
 
     if v1.type == 'vector' and v2.type == 'vector':
         if not v1.isAttr and not v2.isAttr:
-            x = func_operator(float(v1.value[0]), float(v2.value[0]))
-            y = func_operator(float(v1.value[1]), float(v2.value[1]))
-            z = func_operator(float(v1.value[2]), float(v2.value[2]))
+            x = sum_sub_func((v1.value[0], v2.value[0]), func_operator)
+            y = sum_sub_func((v1.value[1], v2.value[1]), func_operator)
+            z = sum_sub_func((v1.value[2], v2.value[2]), func_operator)
+
             core.delete(NODE)
             return MayaNode(x, y, z)
 
@@ -235,9 +236,10 @@ def sum_sub_func(body, func_operator):
 
     elif v1.type == 'vector' and v2.type == 'single':
         if not v1.isAttr and not v2.isAttr:
-            x = func_operator(float(v1.value[0]), float(v2.value))
-            y = func_operator(float(v1.value[1]), float(v2.value))
-            z = func_operator(float(v1.value[2]), float(v2.value))
+            x = sum_sub_func((v1.value[0], v2), func_operator)
+            y = sum_sub_func((v1.value[1], v2), func_operator)
+            z = sum_sub_func((v1.value[2], v2), func_operator)
+
             core.delete(NODE)
             return MayaNode(x, y, z)
 
@@ -257,9 +259,10 @@ def sum_sub_func(body, func_operator):
 
     elif v1.type == 'single' and v2.type == 'vector':
         if not v1.isAttr and not v2.isAttr:
-            x = func_operator(float(v1.value), float(v2.value[0]))
-            y = func_operator(float(v1.value), float(v2.value[1]))
-            z = func_operator(float(v1.value), float(v2.value[2]))
+            x = sum_sub_func((v2.value[0], v1), func_operator)
+            y = sum_sub_func((v2.value[1], v1), func_operator)
+            z = sum_sub_func((v2.value[2], v1), func_operator)
+
             core.delete(NODE)
             return MayaNode(x, y, z)
 
@@ -338,9 +341,10 @@ def mul_div_pow_func(body, func_operator):
 
     if v1.type == 'vector' and v2.type == 'vector':
         if not v1.isAttr and not v2.isAttr:
-            x = func_operator(float(v1.value[0]), float(v2.value[0]))
-            y = func_operator(float(v1.value[1]), float(v2.value[1]))
-            z = func_operator(float(v1.value[2]), float(v2.value[2]))
+            x = mul_div_pow_func((v1.value[0], v2.value[0]), func_operator)
+            y = mul_div_pow_func((v1.value[1], v2.value[1]), func_operator)
+            z = mul_div_pow_func((v1.value[2], v2.value[2]), func_operator)
+
             core.delete(NODE)
             return MayaNode(x, y, z)
 
@@ -360,9 +364,10 @@ def mul_div_pow_func(body, func_operator):
 
     elif v1.type == 'vector' and v2.type == 'single':
         if not v1.isAttr and not v2.isAttr:
-            x = func_operator(float(v1.value[0]), float(v2.value))
-            y = func_operator(float(v1.value[1]), float(v2.value))
-            z = func_operator(float(v1.value[2]), float(v2.value))
+            x = mul_div_pow_func((v1.value[0], v2), func_operator)
+            y = mul_div_pow_func((v1.value[1], v2), func_operator)
+            z = mul_div_pow_func((v1.value[2], v2), func_operator)
+
             core.delete(NODE)
             return MayaNode(x, y, z)
 
@@ -382,9 +387,10 @@ def mul_div_pow_func(body, func_operator):
 
     elif v1.type == 'single' and v2.type == 'vector':
         if not v1.isAttr and not v2.isAttr:
-            x = func_operator(float(v1.value), float(v2.value[0]))
-            y = func_operator(float(v1.value), float(v2.value[1]))
-            z = func_operator(float(v1.value), float(v2.value[2]))
+            x = mul_div_pow_func((v2.value[0], v1), func_operator)
+            y = mul_div_pow_func((v2.value[1], v1), func_operator)
+            z = mul_div_pow_func((v2.value[2], v1), func_operator)
+
             core.delete(NODE)
             return MayaNode(x, y, z)
 
