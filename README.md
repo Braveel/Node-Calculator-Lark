@@ -5,7 +5,7 @@ Inspired by [Chad Vernon's implementation](https://github.com/chadmv/cmt), I dec
 
 ## Install:
 
-Your version of maya must have lark-parser installed. 
+Your version of maya must have [lark-parser](https://github.com/lark-parser/lark) installed. 
 
 You can freely download and install the version you need.
 For simplicity, I added the Lark folder to the repository. It contains a zip archive with the parser.
@@ -35,14 +35,25 @@ n_calc.run_expr("box_3.t = box_1.tz + (box_2.r - (<7,7,7> + <2,4,2>)) + PI")
 
 The expression consists of three parts: left value, assignment sign (=) and right value. 
 Left value - can only have attribute name, like:
-```Python
+```
 pCube1.ry, L_arm_ctrl.t
 ```
 
 No expressions or constants on the left side of an expression will be accepted by the calculator.
 There will only be __errors__.
 
-The right value is an expression written in human readable style.
+The right value is an expression written in human readable style:
+
+``` cross(box_1.t, <box_1.tx, 22, box_2.sz>, norm=1) ```
+
+``` -box_1.ty + <1, 2, 3>  ```
+
+``` box_2.rx > 4 ? <2,3,4> + box_1.ty : box_2.s * box_1.t ```
+
+### Examples of use:
+
+
+
 
 * * *
 
@@ -67,13 +78,13 @@ The right value is an expression written in human readable style.
   The calculator can use attributes and constant values - <ins>__scalars__</ins> and <ins>__vectors__</ins>.
   
   A scalar is a simple numeric value, or a one-component attribute:
-  ```Python
-  head_1_ctrl.ry, 4, .73, root_offset_grp.sx, 5.22
+  ```
+  M_head_1_ctrl.ry  4  .73  M_root_offset_grp.sx  5.22
   ```
   
   Vector is a three-component value. And can be written as an attribute of vector type:
-  ```Python
-  L_arm_ctrl.t
+  ```
+  L_arm_ctrl.t  M_root_ctrl.s  M_main_ctrl.r
   ```
   
   Or in the form of angle brackets: **< >**.
@@ -88,7 +99,7 @@ The right value is an expression written in human readable style.
   
   Vector can also be compound:
   
-  ```<head_1_ctrl.ry, 43, L_bend_2_ctrl.tz>```
+  ```<M_head_1_ctrl.ry, 43, L_bend_2_ctrl.tz>```
   
   In a compound vector, an attribute consisting of three components will be considered as an error.
 
@@ -121,7 +132,7 @@ The right value is an expression written in human readable style.
 	
 Example: 
 ```
-<head_1_ctrl.ry, 43, 22> + 33 == <head_1_ctrl.ry +33, 43 + 33, 22 + 33>
+<M_head_1_ctrl.ry, 43, 22> + 33 == <M_head_1_ctrl.ry +33, 43 + 33, 22 + 33>
 ```
 
 ### 6. If the binary operation involves a <ins>__vector__</ins> and a <ins>__vector__</ins>, the expression takes the form
@@ -130,5 +141,16 @@ Example:
 	
 Example:
 ```
-<head_1_ctrl.ry, 43, 22> / <71.3, box_1.sx> == <head_1_ctrl.ry / 71.3, 43 / box_1.sx, 22 / 0>
+<M_head_1_ctrl.ry, 43, 22> / <71.3, box_1.sx> == <M_head_1_ctrl.ry / 71.3, 43 / box_1.sx, 22 / 0>
 ```
+
+### TODO:
+ - Implement the use of variables, like:
+	 ```Python
+	 n_calc.run_expr("x: = L_arm_3_ctrl.r ; M_main_motion_grp.t = x + <2, 4, 7>")
+	 ```
+
+ - Return a list of created nodes.
+ - Functions: exp(), lerp(), sqrt().
+ - Logging.
+
