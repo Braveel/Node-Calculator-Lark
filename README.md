@@ -50,7 +50,7 @@ The right value is an expression written in human readable style:
 
 ``` box_2.rx > 4 ? <2,3,4> + box_1.ty : box_2.s * box_1.t ```
 
-### Examples of use:
+## Examples of use:
 
 ```Pyton n_calc.run_expr('box_3.t = box_2.rx > 4 ? <2,3,4> + box_1.ty : box_2.s * box_1.t ') ```
 
