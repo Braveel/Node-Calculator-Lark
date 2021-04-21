@@ -5,17 +5,7 @@ Inspired by [Chad Vernon's implementation](https://github.com/chadmv/cmt), I dec
 
 ## Install:
 
-Your version of maya must have [lark-parser](https://github.com/lark-parser/lark) installed. 
-
-You can freely download and install the version you need.
-For simplicity, I added the Lark folder to the repository. It contains a zip archive with the parser.
-All you need to do is unzip the archive and add it to the Python directory of your Maya, which is usually located at:
-		
-	c:\Program Files\Autodesk\{Maya_vesrion}\Python\Lib\site-packages\
-
-After that you need to restart Maya.
-
-Enter the code below in the Maya script editor:
+Enter the following code  in the Maya script editor:
 ```Python
 import sys
 path = 'your_path_to_Node_Calculator_Lark'
