@@ -18,7 +18,7 @@ After that you need to restart Maya.
 Enter the code below in the Maya script editor:
 ```Python
 import sys
-path = 'your_way_to_Node_Calculator_Lark'
+path = 'your_path_to_Node_Calculator_Lark'
 if not path in sys.path:
     sys.path.append(path) 
 
