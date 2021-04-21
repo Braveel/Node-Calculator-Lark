@@ -153,6 +153,6 @@ Example:
 	 ```
 
  - Return a list of created nodes.
- - Functions: exp(), lerp(), sqrt(), norm(), clamp(), mod(), step(), foor(), cell(), smoothstep().
+ - Functions: exp(s), lerp(s_1, s_2, t), sqrt(s), norm(vec), clamp(min, max, s), mod(s), step(s), foor(s), cell(s), smoothstep(), length(vec).
  - Logging.
 
