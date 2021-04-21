@@ -18,7 +18,7 @@ After that you need to restart Maya.
 Enter the code below in the Maya script editor:
 ```Python
 import sys
-path = 'your_way_to_Node_Calculator_Lark'
+path = 'your_path_to_Node_Calculator_Lark'
 if not path in sys.path:
     sys.path.append(path) 
 
@@ -50,10 +50,22 @@ The right value is an expression written in human readable style:
 
 ``` box_2.rx > 4 ? <2,3,4> + box_1.ty : box_2.s * box_1.t ```
 
-### Examples of use:
+## Examples of use:
 
+```Python
+n_calc.run_expr("box_3.t = box_2.rx > 4 ? <2,3,4> + box_1.ty : box_2.s * box_1.t ")
+```
+<img src="./images/example_1.png" alt="drawing" width="900"/>
 
+```Python
+n_calc.run_expr("box_3.t = (box_1.tx / box_2.s + <1,2,4>) / 5 + <3,5,7> * (2 / box_1.s)")
+```
+<img src="./images/example_2.png" alt="drawing" width="900"/>
 
+```Python
+n_calc.run_expr("box_3.t = <abs(box_1.tx), min(box_1.ry, box_2.tz), box_2.tx >= box_1.sy>")
+```
+<img src="./images/example_3.png" alt="drawing" width="900"/>
 
 * * *
 
